@@ -2,7 +2,7 @@
 /*
 Plugin Name: Русификатор
 Description: Сниппеты для русскоязычного блога. Транслитерация кириллицы в названиях файлов и url создаваемых записей, русификация даты и времени.
-Version: 1.2
+Version: 1.0
 Author: Anton Lukin
 Author URI: https://lukin.me/
  */       
