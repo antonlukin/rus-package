@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Русификатор
+Plugin Name: Rus Package
 Description: Сниппеты для русскоязычного блога. Транслитерация кириллицы в названиях файлов и url создаваемых записей, русификация даты и времени.
 Version: 1.0
 Author: Anton Lukin
