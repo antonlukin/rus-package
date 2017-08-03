@@ -5,6 +5,7 @@ Description: Сниппеты для русскоязычного блога. Т
 Version: 1.0
 Author: Anton Lukin
 Author URI: https://lukin.me/
+Plugin URI: https://github.com/antonlukin/rus-package
  */       
 
 if (!defined('WPINC')) {
