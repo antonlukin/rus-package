@@ -7,7 +7,7 @@ Snippets for Russian-language blog. Cyrillic to Latin converation in slugs and d
 Simple and fast plugin for Russian-language blog. Converts cyrillic characters in posts, pages, terms and file names.
 Declension of nouns in Russian dates. Recommended to use for all fresh-installed Russian-speaking audience sites.
 
-This plugin installed and successfully works on [lifehacker.ru](https://lifehacker.ru) and [knife.media](knife.media) blogs.
+This plugin installed and successfully works on [lifehacker.ru](https://lifehacker.ru) and [knife.media](https://knife.media) blogs.
 
 ## Installation
 
