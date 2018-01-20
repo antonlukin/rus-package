@@ -1,32 +1,36 @@
 === Rus Package ===
-Contributors: alukin
-Tags: transliterate, russification, rus date, cyrillic, русификация, транслитерация, кириллица, cyr 2 lat
+Contributors: antonlukin
+Tags: transliterate, russification, rus date, cyrillic, русификация, транслитерация, кириллица, cyr2lat
 Requires at least: 4.4
-Tested up to: 4.8
-Stable tag: 1.0
+Tested up to: 4.9.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Сниппеты для русскоязычного блога. Транслитерация кириллицы в названиях файлов и url создаваемых записей, русификация даты и времени. 
+Snippets for Russian-language blog. Cyrillic to Latin converation in slugs and declension of nouns in dates.
 
 == Description ==
 
-Простой и быстрый плагин для русскоязычного блога. Замена кириллических символов на латиницу в названиях файлов и постов. Перевод даты и времени на русский язык
+Simple and fast plugin for Russian-language blog. Converts cyrillic characters in posts, pages, terms and file names.
+Declension of nouns in Russian dates. Recommended to use for all fresh-installed Russian-speaking audience sites.
 
-Пулл-реквест можно добавить на  [Github](https://github.com/antonlukin/rus-package).
+You can contribute this plugin on [Github](https://github.com/antonlukin/rus-package).
 
 == Installation ==
 
-1. Загрузите папку `rus-pachakge` в директорию `/wp-content/plugins/`
-2. Активируйте плагин в панели администратора
-3. Все остальное будет работать без вашего участия
+1. Upload `rus-package` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the ‘Plugins’ menu in WordPress.
+3. If you have any problems — please ask for support.
 
 == Screenshots ==
 
-1. Автоматический перевод даты и времени на русский язык 
-2. Транслитерация url и имен файлов для улучшения ЧПУ
+1. Склонение месяца на русском
+2. Транслитерация url для улучшения ЧПУ
 
 == Changelog ==
 
-= 1.0 = 
-* Первый релиз
+= 1.1 =
+* Update code according WordPress Coding Standards
+
+= 1.0 =
+* Initial release

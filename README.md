@@ -1,13 +1,16 @@
-# Русификатор для Wordpress #
+# Rus Package
 
-Сниппеты для русскоязычного блога. Транслитерация кириллицы в названиях файлов и url создаваемых записей, русификация даты и времени. 
+Snippets for Russian-language blog. Cyrillic to Latin converation in slugs and declension of nouns in dates.
 
-### Описание ###
+## Description
 
-Простой и быстрый плагин для русскоязычного блога. Замена кириллических символов на латиницу в названиях файлов и постов. Перевод даты и времени на русский язык
+Simple and fast plugin for Russian-language blog. Converts cyrillic characters in posts, pages, terms and file names.
+Declension of nouns in Russian dates. Recommended to use for all fresh-installed Russian-speaking audience sites.
 
-### Установка ###
+This plugin installed and successfully works on [lifehacker.ru](https://lifehacker.ru) and [knife.media](knife.media) blogs.
 
-1. Загрузите папку `rus-pachakge` в директорию `/wp-content/plugins/`
-2. Активируйте плагин в панели администратора
-3. Все остальное будет работать без вашего участия 
+## Installation
+
+1. Upload `rus-package` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the ‘Plugins’ menu in WordPress.
+3. If you have any problems — please ask for support.
