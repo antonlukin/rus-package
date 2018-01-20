@@ -24,8 +24,8 @@ You can contribute this plugin on [Github](https://github.com/antonlukin/rus-pac
 
 == Screenshots ==
 
-1. Склонение месяца на русском
-2. Транслитерация url для улучшения ЧПУ
+1. Declension of nouns in Russian dates
+2. URI transliteration
 
 == Changelog ==
 
