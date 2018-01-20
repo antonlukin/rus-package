@@ -6,6 +6,7 @@ Version: 1.1
 Author: Anton Lukin
 Author URI: https://lukin.me/
 Plugin URI: https://github.com/antonlukin/rus-package
+Text Domain: rus-package
  */
 
 if ( ! defined( 'WPINC' ) ) {
