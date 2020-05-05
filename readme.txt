@@ -2,8 +2,8 @@
 Contributors: antonlukin
 Tags: transliterate, russification, rus date, cyrillic, русификация, транслитерация, кириллица, cyr2lat
 Requires at least: 4.4
-Tested up to: 4.9.2
-Stable tag: 1.1
+Tested up to: 5.4.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ You can contribute this plugin on [Github](https://github.com/antonlukin/rus-pac
 2. URI transliteration
 
 == Changelog ==
+
+= 1.2 =
+* Minor code improvements
 
 = 1.1 =
 * Update code according WordPress Coding Standards

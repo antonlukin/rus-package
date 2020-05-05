@@ -1,12 +1,12 @@
 <?php
-/*
-Plugin Name: Rus Package
-Description: Snippets for Russian-language blog. Cyrillic to Latin converation in slugs and declension of nouns on dates.
-Version: 1.1
-Author: Anton Lukin
-Author URI: https://lukin.me/
-Plugin URI: https://github.com/antonlukin/rus-package
-Text Domain: rus-package
+/**
+ * Plugin Name: Rus Package
+ * Description: Snippets for Russian-language blog. Cyrillic to Latin converation in slugs and declension of nouns on dates.
+ * Version: 1.2
+ * Author: Anton Lukin
+ * Author URI: https://lukin.me/
+ * Plugin URI: https://github.com/antonlukin/rus-package
+ * Text Domain: rus-package
  */
 
 if ( ! defined( 'WPINC' ) ) {
@@ -20,45 +20,74 @@ add_action( 'init', function() {
 } );
 
 class Rus_Transliteration {
-	public function __construct() {
-		add_action( 'sanitize_title',        array( $this, 'sanitize_cyrillic' ), 0 );
-		add_action( 'sanitize_file_name',    array( $this, 'sanitize_cyrillic' ), 0 );
+	/**
+	 * Set public actions and filters
+	 */
+	public function __construct()
+	{
+		add_action( 'sanitize_title',        array( $this, 'sanitize_title' ), 9 );
+		add_action( 'sanitize_file_name',    array( $this, 'sanitize_file_name' ), 9 );
 
-		add_filter( 'the_date',              array( $this, 'update_time' ) );
-		add_filter( 'the_time',              array( $this, 'update_time' ) );
-		add_filter( 'get_the_time',          array( $this, 'update_time' ) );
-		add_filter( 'get_the_date',          array( $this, 'update_time' ) );
-		add_filter( 'get_post_time',         array( $this, 'update_time' ) );
-		add_filter( 'get_comment_date',      array( $this, 'update_time' ) );
-		add_filter( 'the_modified_time',     array( $this, 'update_time' ) );
-		add_filter( 'get_the_modified_date', array( $this, 'update_time' ) );
-
+		add_filter( 'the_date',              array( $this, 'update_date' ) );
+		add_filter( 'the_time',              array( $this, 'update_date' ) );
+		add_filter( 'get_the_time',          array( $this, 'update_date' ) );
+		add_filter( 'get_the_date',          array( $this, 'update_date' ) );
+		add_filter( 'get_post_time',         array( $this, 'update_date' ) );
+		add_filter( 'get_comment_date',      array( $this, 'update_date' ) );
+		add_filter( 'the_modified_time',     array( $this, 'update_date' ) );
+		add_filter( 'get_the_modified_date', array( $this, 'update_date' ) );
 	}
 
-	public function sanitize_cyrillic( $name ) {
+
+	/**
+	 * Replace latin with cyrillic using ISO 9
+	 */
+	private function replace_latin( $name )
+	{
 		$replace = array(
-			"А"=>"A","Б"=>"B","В"=>"V","Г"=>"G","Д"=>"D",
-			"Е"=>"E","Ё"=>"YO","Ж"=>"ZH","З"=>"Z","И"=>"I",
-			"Й"=>"J","К"=>"K","Л"=>"L","М"=>"M","Н"=>"N",
-			"О"=>"O","П"=>"P","Р"=>"R","С"=>"S","Т"=>"T",
-			"У"=>"U","Ф"=>"F","Х"=>"X","Ц"=>"C","Ч"=>"CH",
-			"Ш"=>"SH","Щ"=>"SHH","Ъ"=>"'","Ы"=>"Y","Ь"=>"",
-			"Э"=>"E","Ю"=>"YU","Я"=>"YA","а"=>"a","б"=>"b",
-			"в"=>"v","г"=>"g","д"=>"d","е"=>"e","ё"=>"yo",
-			"ж"=>"zh","з"=>"z","и"=>"i","й"=>"j","к"=>"k",
-			"л"=>"l","м"=>"m","н"=>"n","о"=>"o","п"=>"p",
-			"р"=>"r","с"=>"s","т"=>"t","у"=>"u","ф"=>"f",
-			"х"=>"x","ц"=>"c","ч"=>"ch","ш"=>"sh","щ"=>"sch",
-			"ъ"=>"","ы"=>"y","ь"=>"","э"=>"e","ю"=>"yu",
-			"я"=>"ya","ë"=>"yo","й"=>"J","Ї"=>"Yi","ї"=>"i",
-			"Ґ"=>"G","ґ"=>"g","Є"=>"Ye","є"=>"ie","І"=>"I",
-			"і"=>"i","Ә"=>"A","Ғ"=>"G","Қ"=>"K","Ң"=>"N",
-			"Ө"=>"O","Ұ"=>"U","Ү"=>"U","H"=>"H","ә"=>"a",
-			"ғ"=>"g","қ"=>"k","ң"=>"n","ө"=>"o","ұ"=>"u",
-			"h"=>"h","—"=>"-"
+			'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D',
+			'Е' => 'E', 'Ё' => 'YO', 'Ж' => 'ZH', 'З' => 'Z', 'И' => 'I',
+			'Й' => 'J', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+			'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S', 'Т' => 'T',
+			'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'CZ', 'Ч' => 'CH',
+			'Ш' => 'SH', 'Щ' => 'SHH', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '',
+			'Э' => 'E', 'Ю' => 'YU', 'Я' => 'YA',
+
+			'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
+			'е' => 'e', 'ё' => 'yo', 'ж' => 'zh', 'з' => 'z', 'и' => 'i',
+			'й' => 'j', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n',
+			'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't',
+			'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'cz', 'ч' => 'ch',
+			'ш' => 'sh', 'щ' => 'shh', 'ъ' => '', 'ы' => 'y', 'ь' => '',
+			'э' => 'e', 'ю' => 'yu', 'я' => 'ya'
 		);
 
 		$name = strtr( $name, $replace );
+
+		return $name;
+	}
+
+
+	/**
+	 * Leave only latin chars and digits in slugs
+	 */
+	public function sanitize_title( $name )
+	{
+		$name = $this->replace_latin( $name );
+
+		// Leave only latin chars and digits in slugs
+		$name = preg_replace( '/[^a-z0-9]/i', '-', $name );
+
+		return $name;
+	}
+
+
+	/**
+	 * Update file names
+	 */
+	public function sanitize_file_name( $name )
+	{
+		$name = $this->replace_latin( $name );
 
 		if ( seems_utf8( $name ) ) {
 			$name = urldecode( $name );
@@ -67,7 +96,12 @@ class Rus_Transliteration {
 		return $name;
 	}
 
-	public function update_time( $date = '' ) {
+
+	/**
+	 * Replace english dates with russian names
+	 */
+	public function update_date( $date = '' )
+	{
 		$replace = array(
 			"Январь"    => "января",
 			"Февраль"   => "февраля",
@@ -117,6 +151,8 @@ class Rus_Transliteration {
 			"rd" => ""
 		);
 
-		return strtr( $date, $replace );
+		$date = strtr( $date, $replace );
+
+		return $date;
 	}
 }
